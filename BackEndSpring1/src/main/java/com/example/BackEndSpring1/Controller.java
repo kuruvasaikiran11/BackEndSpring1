@@ -1,22 +1,19 @@
 package com.example.BackEndSpring1;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class Controller{
-    HashMap<Integer, String> hm = new HashMap<>();
-
+    Map<Integer, String> users = new HashMap<>();
     @GetMapping("/get_user")
-    public String getuser(@RequestParam("num") int num){
-        return hm.get(num);
+    public String getUsers(@RequestParam("num") int id){
+        return users.get(id);
     }
     @PostMapping("/add_user")
-    public void adduser(@RequestParam("user") String user, @RequestParam("num") int num){
-        hm.put(num, user);
+    public void addUser(@RequestParam("id") int id, @RequestParam("name") String name){
+
+        users.put(id, name);
     }
 }
